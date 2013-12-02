@@ -157,7 +157,12 @@ public:
 };
 
 bool nodeCmp(Nodo n1, Nodo n2) {
-	return n1.Vp < n2.Vp;
+	if (n1.Vp != n2.Vp) {
+		return n1.Vp < n2.Vp;
+	}
+	else {
+		return n1.nivel < n2.nivel;
+	}
 }
 
 void branchAndBound()
