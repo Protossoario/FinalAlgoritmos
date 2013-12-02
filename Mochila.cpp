@@ -122,24 +122,20 @@ double calculaValorPosible(int valorAcumulado, int peso, int nivel)
 void backtracking(int valorAcumulado, int pesoAcumulado, int nivel)
 {
 	backtrackingNodes++;
-    if (nivel <= amountOfObjects)
-    {
-        if (pesoAcumulado <= knapsackWeight)
-        {
-        	if (valorAcumulado > solutionBacktracking)
-			{
-				solutionBacktracking = valorAcumulado;
-			}
-			int valorPosible = calculaValorPosible(valorAcumulado, pesoAcumulado, nivel);
-			if (valorPosible > solutionBacktracking)
-			{
+	int valorPosible = calculaValorPosible(valorAcumulado, pesoAcumulado, nivel);
+	if (valorPosible > solutionBacktracking && pesoAcumulado <= knapsackWeight) {
+		if (valorAcumulado > solutionBacktracking)
+		{
+			solutionBacktracking = valorAcumulado;
+		}
+		if (nivel <= amountOfObjects)
+		{
 				include[nivel] = true;
 				backtracking(valorAcumulado + object[nivel].getValue(), pesoAcumulado + object[nivel].getWeight(), nivel + 1);
 				include[nivel] = false;
 				backtracking(valorAcumulado, pesoAcumulado, nivel + 1);
-			}
-        }
-    }
+		}
+	}
 }
 
 /**
