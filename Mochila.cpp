@@ -180,9 +180,9 @@ void branchAndBound()
 			double newVp = calculaValorPosible(current.Va, current.Pa, current.nivel + 1);
 			Nodo hijoIzq(current.Va + object[current.nivel].getValue(), current.Vp, current.Pa + object[current.nivel].getWeight(), current.nivel + 1);
 			Nodo hijoDer(current.Va, newVp, current.Pa, current.nivel + 1);
-			heap.push_back(hijoIzq);
-			push_heap(heap.begin(), heap.end(), nodeCmp);
 			heap.push_back(hijoDer);
+			push_heap(heap.begin(), heap.end(), nodeCmp);
+			heap.push_back(hijoIzq);
 			push_heap(heap.begin(), heap.end(), nodeCmp);
 		}
 	}
